@@ -4,6 +4,7 @@ class Commentaire {
 	static belongsTo = [bien: BienImmobilier]
 	String message
 	Date date
+	String auteur = "Anonyme"
 	
 	public Commentaire(String message, Date date,BienImmobilier bien){
 		this.message = message;

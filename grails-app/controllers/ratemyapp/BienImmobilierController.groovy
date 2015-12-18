@@ -20,7 +20,15 @@ class BienImmobilierController {
 		
 		def appart = BienImmobilier.get(params.id);
 		def commentaires = appart.commentaires;
-		render(view: "voirAppart",model:[apartment:appart,commentaires:commentaires]);
+		
+		Note noteTemp = new Note();
+		
+		noteTemp.noteSatisfaction =  appart.getMoyenneNoteSatisfaction();
+		noteTemp.noteGlobal =  appart.getMoyenneNoteGeneral();
+		noteTemp.noteIsolation =  appart.getMoyenneNoteIsolation();
+		noteTemp.noteProprete =  appart.getMoyenneNoteProprete();
+		
+		render(view: "voirAppart",model:[apartment:appart,commentaires:commentaires,note:noteTemp]);
 	}
 	
 	//Permet une recherche avec une requete get avec comme parametre q la chaine a rechercher pour le nom de rue 
@@ -54,5 +62,8 @@ class BienImmobilierController {
 
 		redirect(action: "voirAppart",params: [id: params.id])
 	}
-	
+	def addNote(){
+		def note = new Note(params.proprete.toInteger(),params.satisfaction.toInteger(),params.isolation.toInteger(),BienImmobilier.get(params.id)).save();
+		redirect(action: "voirAppart",params: [id: params.id])
+	}
 }

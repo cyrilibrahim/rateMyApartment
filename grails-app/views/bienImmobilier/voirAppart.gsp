@@ -81,7 +81,7 @@
 	<div class="row">
         <div class="col-sm-6 col-sm-offset-3">
             <div id="imaginary_container"> 
-				<form method="GET" action="recherche">
+				<form method="GET" action="/RateMyApp/bienImmobilier/recherche">
 	                <div class="input-group stylish-input-group">
 	                    <input type="text" class="form-control" name="q"  placeholder="Search" >
 	                    <span class="input-group-addon">
@@ -161,14 +161,38 @@
 
     <hr data-brackets-id="12673">
     <ul data-brackets-id="12674" id="sortable" class="list-unstyled ui-sortable">
-       
-         <strong class="pull-left primary-font">Taylor</strong>
-        <small class="pull-right text-muted">
-           <span class="glyphicon glyphicon-time"></span>14 mins ago</small>
-        </br>
-        <li class="ui-state-default">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+		 <strong class="pull-left primary-font"> Francois</strong>
+		        <small class="pull-right text-muted">
+		           <span class="glyphicon glyphicon-time"></span>Il y a 2 jours</small>
+		        </br>
+		        <li class="ui-state-default">Appartement mal isolé</li>
+		 <strong class="pull-left primary-font"> Francoise</strong>
+		        <small class="pull-right text-muted">
+		           <span class="glyphicon glyphicon-time"></span>Il y a 2 jours</small>
+		        </br>
+		        <li class="ui-state-default">L'éclairage est très bon!!!! 
+		        Je le recommande vivement 
+		        </li>
+		 <strong class="pull-left primary-font"> Siva</strong>
+		        <small class="pull-right text-muted">
+		           <span class="glyphicon glyphicon-time"></span>Il y a 2 jours</small>
+		        </br>
+		        <li class="ui-state-default">Bel appartement très spacieux
+		        </li>
+		 <strong class="pull-left primary-font"> Cyril</strong>
+		        <small class="pull-right text-muted">
+		           <span class="glyphicon glyphicon-time"></span>Il y a 2 jours</small>
+		        </br>
+		        <li class="ui-state-default">Le meilleur!!! 
+		        </li>
+		 <strong class="pull-left primary-font"> Samuel</strong>
+		        <small class="pull-right text-muted">
+		           <span class="glyphicon glyphicon-time"></span>Il y a 2 jours</small>
+		        </br>
+		        <li class="ui-state-default"> Non moi je vous suis pas y avait des punaises 
+		        </li>
     <g:each in="${commentaires}" var="commentaire">
-		 <strong class="pull-left primary-font">James</strong>
+		 <strong class="pull-left primary-font">${commentaire.auteur}</strong>
 		        <small class="pull-right text-muted">
 		           <span class="glyphicon glyphicon-time"></span>${commentaire.date}</small>
 		        </br>
@@ -198,34 +222,41 @@
 	
 <div class="container" style="color:white;" id="droiteplease" >
 	<div class="row">
-		<h2>Laisse une note general!!</h2>
+		<h2>note generale</h2>
 	</div>
     <div class="row lead">
-        <div id="stars" class="starrr"></div>
-        Vous avez donne la note de  <span id="count">0</span> etoiles
+        <div id="stars" class="starrr" data-rating='${note.noteGlobal}'></div>
+		<span>${note.noteGlobal}/5</span>
 	</div>
     
     <div class="row lead">
         <p>Proprete</p>
-        <div id="stars-existing" class="starrr" data-rating='4'></div>
+        <div id="stars-existing4" class="starrr" data-rating='${note.noteProprete }'></div>
     </div>
 	    <div class="row lead">
         <p>Isolation</p>
-        <div id="stars-existing" class="starrr" data-rating='4'></div>
+        <div id="stars-existing2" class="starrr" data-rating='${note.noteIsolation }'></div>
     </div>
 	    <div class="row lead">
         <p>Satisfaction</p>
-        <div id="stars-existing" class="starrr" data-rating='4'></div>
+        <div id="stars-existing3" class="starrr" data-rating='${note.noteSatisfaction }'></div>
     </div>
+    <form action="/RateMyApp/bienImmobilier/addNote" method="GET" id="form-notation">
+    	<input id="noteProprete" name="proprete" type="hidden" value="3">
+    	<input id="noteIsolation" name="isolation" type="hidden" value="3">
+    	<input id="noteSatisfaction" name="satisfaction" type="hidden" value="3">
+    	<input type="hidden" name="id" value='${apartment.id}'>
+    	<button  type="submit" class="btn btn-default" id="noter">Noter</button>
+    </form>
+    
 </div>
 
 
 
 
-
-
-
 <asset:javascript src="table2.js"/>
+
+
 </body>
 
 

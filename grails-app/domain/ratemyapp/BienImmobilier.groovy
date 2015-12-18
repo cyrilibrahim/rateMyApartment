@@ -2,8 +2,8 @@ package ratemyapp
 
 public class BienImmobilier {
 	
-	static hasMany = [commentaires: Commentaire]
-	
+	static hasMany = [commentaires: Commentaire,notes:Note]
+
 	int nombreDePieces 
 	int numApp
 	String description
@@ -26,6 +26,87 @@ public class BienImmobilier {
 
 	}
 	
+	//Retourne la note moyenne d'isolation 
+	public int getMoyenneNoteIsolation(){
+		
+		def addition = 0;
+		if(notes!= null && notes.size() > 0){
+			
+		
+			notes.each {
+				addition = addition + it.noteIsolation;
+			}
+			
+			return (int)(addition/notes.size()); 
+				
+		}else{
+			return 3;
+		}
+
+		
+	}
+	
+	//Retourne la note moyenne de satisfaction
+	public int getMoyenneNoteSatisfaction(){
+		def addition = 0;
+		
+
+		if(notes!= null && notes.size() > 0 ){
+			
+			notes.each {
+				addition = addition + it.noteSatisfaction;
+			}
+
+			
+			return (int)(addition/notes.size());
+				
+		}else{
+			return 3;
+		}
+
+		
+	}
+	
+	//Retourne la note moyenne de proprete
+	public int getMoyenneNoteProprete(){
+		def addition = 0;
+		
+		if(notes!= null && notes.size() > 0){
+			
+			notes.each {
+				addition = addition + it.noteProprete;
+			}
+			
+			return (int)(addition/notes.size());
+			
+		}else{
+			return 3;
+		}
+
+		
+	}
+	
+	//Retourne la note moyenne generale
+	public int getMoyenneNoteGeneral(){
+		
+		def addition = 0;
+		
+		if(notes != null && notes.size() > 0){
+			
+			notes.each {
+				addition = addition + it.noteGlobal;
+			}
+
+			return (int)(addition/notes.size());
+				
+		}else{
+			return 3;
+		}
+
+		
+		return (int)(addition/notes.size());
+		
+	}
     static constraints = {
 
 	}

@@ -111,4 +111,13 @@ $( document ).ready(function() {
   $('#stars-existing').on('starrr:change', function(e, value){
     $('#count-existing').html(value);
   });
+  $('#stars-existing2').on('starrr:change', function(e, value){
+	    $('#noteIsolation').val(value);
+  });  
+  $('#stars-existing3').on('starrr:change', function(e, value){
+	    $('#noteSatisfaction').val(value);
+  }); 
+  $('#stars-existing4').on('starrr:change', function(e, value){
+	    $('#noteProprete').val(value);
+  }); 
 });

@@ -172,15 +172,15 @@
 	            <div class="row overview">
 	                <div class="col-md-4 user-pad text-center">
 	                    <h3>  Isolation: </h3>
-	                    <h4>4/5</h4>
+	                    <h4>${apartment.getMoyenneNoteIsolation()}/5</h4>
 	                </div>
 	                <div class="col-md-4 user-pad text-center">
 	                    <h3>Proprete</h3>
-	                    <h4>3/5</h4>
+	                    <h4>${apartment.getMoyenneNoteProprete()}/5</h4>
 	                </div>
 	                <div class="col-md-4 user-pad text-center">
 	                    <h3>Satisfaction</h3>
-	                    <h4>2/5</h4>
+	                    <h4>${apartment.getMoyenneNoteSatisfaction()}/5</h4>
 	                </div>
 	            </div>
 	        </div>
