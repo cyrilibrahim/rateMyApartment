@@ -1,10 +1,6 @@
 package ratemyapp
 
 class BienImmobilierController {
-
-    def index() {
-		render "Voici les bien immobiliers"
-	}
 	
 	/*
 	 * MÉTHODE GET
@@ -19,21 +15,32 @@ class BienImmobilierController {
 	
 	def searchApartment(){
 		
-		String critere =  params.q.toLowerCase();
+
+	}
+	
+	//Permet une recherche avec une requete get avec comme parametre q la chaine a rechercher pour le nom de rue 
+	def recherche(){
+		String critere =  params.q.toString()toLowerCase();
 		
 		ArrayList resultats = []
 		
-		def tousLesAppart = BienImmobilier.getAll()
-
-		tousLesAppart.each() {
-
-			if(it.getRue().toLowerCase() ==~ /.*$critere.*/){
-				resultats.push(it)
+		//Si il n'y a pas de recherche cela retourne tous les appartements 
+		if(critere != ""){
+			
+			def tousLesAppart = BienImmobilier.getAll()
+			
+			if(tousLesAppart != null){
+				tousLesAppart.each() {
+					if(it.getRue().toLowerCase() ==~ /.*$critere.*/){
+						resultats.push(it)
+					}
+				}
 			}
 
+		}else{
+			resultats =  BienImmobilier.getAll()
 		}
-
 		
-		render (text:resultats as grails.converters.JSON,contentType: 'application/json', encoding:'utf-8')
+		render(view:"recherche",model:[apartments:resultats]);
 	}
 }

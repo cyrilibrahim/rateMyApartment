@@ -23,7 +23,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Rate My Appartement</a>
+      <a class="navbar-brand" href="/RateMyApp">Rate My Appartement</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -88,14 +88,16 @@
 	<div class="row">
         <div class="col-sm-6 col-sm-offset-3">
             <div id="imaginary_container"> 
-                <div class="input-group stylish-input-group">
-                    <input type="text" class="form-control"  placeholder="Search" >
-                    <span class="input-group-addon">
-                        <button type="submit">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>  
-                    </span>
-                </div>
+            	<form method="GET" action="bienImmobilier/recherche">
+	                <div class="input-group stylish-input-group">
+	                    <input type="text" class="form-control" name="q"  placeholder="Search" >
+	                    <span class="input-group-addon">
+	                        <button type="submit">
+	                            <span class="glyphicon glyphicon-search"></span>
+	                        </button>  
+	                    </span>
+	                </div>
+                </form>
             </div>
         </div>
         <div id="filter-panel" class="collapse filter-panel">
