@@ -161,18 +161,19 @@
 
     <hr data-brackets-id="12673">
     <ul data-brackets-id="12674" id="sortable" class="list-unstyled ui-sortable">
-        <strong class="pull-left primary-font">James</strong>
-        <small class="pull-right text-muted">
-           <span class="glyphicon glyphicon-time"></span>7 mins ago</small>
-        </br>
-        <li class="ui-state-default">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </li>
-        </br>
+       
          <strong class="pull-left primary-font">Taylor</strong>
         <small class="pull-right text-muted">
            <span class="glyphicon glyphicon-time"></span>14 mins ago</small>
         </br>
         <li class="ui-state-default">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
-        
+    <g:each in="${commentaires}" var="commentaire">
+		 <strong class="pull-left primary-font">James</strong>
+		        <small class="pull-right text-muted">
+		           <span class="glyphicon glyphicon-time"></span>${commentaire.date}</small>
+		        </br>
+		        <li class="ui-state-default">${commentaire.message}</li>
+    </g:each>    
     </ul>
     </div>
 </div>
@@ -183,10 +184,12 @@
 <div class="container">
 	<div class="row" id="comments">
 		<div class="span4 well" style="padding-bottom:0" id="messagepost">
-            <form accept-charset="UTF-8" action="" method="POST">
-                <textarea class="span4" id="new_message" name="new_message"
+            <form accept-charset="UTF-8" action="/RateMyApp/bienImmobilier/addComment" method="POST">
+                <textarea class="span4" id="new_message" name="message"
                 placeholder="Type in your message" rows="6" cols="50"></textarea>
+                <input type="hidden" name="id" value="${apartment.id}"><br>
                 <h6 class="pull-right" id="cLeft"></h6>
+                
                 <button class="btn btn-info" type="submit">Post New Message</button>
             </form>
         </div>

@@ -4,6 +4,7 @@ dataSource {
     driverClassName = "org.h2.Driver"
     username = "sa"
     password = ""
+	dialect = com.mypackage.ImprovedH2Dialect
 }
 hibernate {
     cache.use_second_level_cache = true
@@ -15,7 +16,8 @@ hibernate {
 }
 
 // environment specific settings
-environments {
+environments { 
+	
     development {
         dataSource {
             dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
@@ -54,4 +56,6 @@ environments {
             }
         }
     }
+	
 }
+

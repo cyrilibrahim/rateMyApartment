@@ -2,7 +2,7 @@ package ratemyapp
 
 public class BienImmobilier {
 	
-
+	static hasMany = [commentaires: Commentaire]
 	
 	int nombreDePieces 
 	int numApp
@@ -23,6 +23,7 @@ public class BienImmobilier {
 		this.Ville = Ville;
 		this.typeImmobilier = typeImmobilier;
 		this.pathPhoto = pathPhoto ;
+
 	}
 	
     static constraints = {

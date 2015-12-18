@@ -19,8 +19,8 @@ class BienImmobilierController {
 	def voirAppart(){
 		
 		def appart = BienImmobilier.get(params.id);
-		
-		render(view: "voirAppart",model:[apartment:appart]);
+		def commentaires = appart.commentaires;
+		render(view: "voirAppart",model:[apartment:appart,commentaires:commentaires]);
 	}
 	
 	//Permet une recherche avec une requete get avec comme parametre q la chaine a rechercher pour le nom de rue 
@@ -48,4 +48,11 @@ class BienImmobilierController {
 		
 		render(view:"recherche",model:[apartments:resultats]);
 	}
+	
+	def addComment(){
+		def commentaire = new Commentaire(params.message,new Date(),BienImmobilier.get(params.id)).save();
+
+		redirect(action: "voirAppart",params: [id: params.id])
+	}
+	
 }
