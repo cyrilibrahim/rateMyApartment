@@ -6,14 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <asset:stylesheet href="login.css"/>
-  <asset:stylesheet href="table.css"/>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 <body>
 
-<nav class="navbar navbar-default navbar-inverse" role="navigation">
-  <div class="container-fluid">
+<nav class="navbar navbar-default navbar-inverse" id="yoyo" role="navigation">
+  <div class="container-fluid" >
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -26,46 +25,46 @@
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-
+  
       <ul class="nav navbar-nav navbar-right">
-        <li><p class="navbar-text"></p></li>
+        <li><p class="navbar-text">Already have an account?</p></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Session</b> <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
 			<ul id="login-dp" class="dropdown-menu">
 				<li>
-                            <div class="navbar-login">
-                                <div class="row">
-                                    <div class="col-lg-4">
-                                        <p class="text-center">
-                                            <span class="glyphicon glyphicon-user icon-size"></span>
-                                        </p>
-                                    </div>
-                                    <div class="col-lg-8">
-                                        <p class="text-left"><strong>Anonyme</strong></p>
-                                        <p class="text-left small">Anonyme@email.com</p>
-                                        <p class="text-left">
-                                            <a href="#" class="btn btn-primary btn-block btn-sm">Anonyme</a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <div class="navbar-login navbar-login-session">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <p>
-                                            <a href="#" class="btn btn-danger btn-block">Anonyme Sesion</a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-						<li><a href="#">Parametre <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
-            <li class="divider"></li>
-            <li><a href="#">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
-			<li class="divider"></li>
+					 <div class="row">
+							<div class="col-md-12">
+								Login via
+								<div class="social-buttons">
+									<a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
+									<a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
+								</div>
+                                or
+								 <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+										<div class="form-group">
+											 <label class="sr-only" for="exampleInputEmail2">Email address</label>
+											 <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
+										</div>
+										<div class="form-group">
+											 <label class="sr-only" for="exampleInputPassword2">Password</label>
+											 <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
+                                             <div class="help-block text-right"><a href="">Forget the password ?</a></div>
+										</div>
+										<div class="form-group">
+											 <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+										</div>
+										<div class="checkbox">
+											 <label>
+											 <input type="checkbox"> keep me logged-in
+											 </label>
+										</div>
+								 </form>
+							</div>
+							<div class="bottom text-center">
+								New here ? <a href="#"><b>Join Us</b></a>
+							</div>
+					 </div>
+				</li>
 			</ul>
         </li>
       </ul>
@@ -74,11 +73,15 @@
 </nav>
 
 
- <div class='span8 main'>
+	
+
+
+
+<div class="container" >
 	<div class="row">
         <div class="col-sm-6 col-sm-offset-3">
             <div id="imaginary_container"> 
-            	<form method="GET" action="recherche">
+				<form method="GET" action="recherche">
 	                <div class="input-group stylish-input-group">
 	                    <input type="text" class="form-control" name="q"  placeholder="Search" >
 	                    <span class="input-group-addon">
@@ -146,56 +149,81 @@
         </button>
 	</div>
 	
-	<g:each in="${apartments}" var="apartment">
-	<!-- debut table Info1-->
-		<div class="container">
-	    <div class="row user-menu-container square">
-	        <div class="col-md-7 user-details">
-	            <div class="row coralbg white">
-	                <div class="col-md-6 no-pad">
-	                    <div class="user-pad">
-	                        <h3>${apartment.rue}</h3>
-	                        <h4 class="white"><i class="fa fa-check-circle-o"></i> ${apartment.Ville}</h4>
-	                        <h4 class="white"><i class="fa fa-twitter"></i> ${apartment.codePostal}</h4>
-	                        <button type="button" class="btn btn-labeled btn-info" href="#">
-	                           Mise-a-jour</button>
-							<a type="button" class="btn btn-labeled btn-info" href="voirAppart?id=${apartment.id}">
-	                           Consulter</a>  
-	                    </div>
-	                </div>
-	                <div class="col-md-6 no-pad">
-	                    <div class="user-image">
-	                        <g:img dir="images" file="${apartment.pathPhoto}" class="img-responsive thumbnail"/>
-	                    </div>
-	                </div>
-	            </div>
-	            <div class="row overview">
-	                <div class="col-md-4 user-pad text-center">
-	                    <h3>  Isolation: </h3>
-	                    <h4>4/5</h4>
-	                </div>
-	                <div class="col-md-4 user-pad text-center">
-	                    <h3>Proprete</h3>
-	                    <h4>3/5</h4>
-	                </div>
-	                <div class="col-md-4 user-pad text-center">
-	                    <h3>Satisfaction</h3>
-	                    <h4>2/5</h4>
-	                </div>
-	            </div>
-	        </div>
-	         <div class="span8">
-	        	<iframe width="485" height="332" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.uk/maps?f=q&source=s_q&hl=en&geocode=&q=15+Springfield+Way,+Hythe,+CT21+5SH&aq=t&sll=52.8382,-2.327815&sspn=8.047465,13.666992&ie=UTF8&hq=&hnear=15+Springfield+Way,+Hythe+CT21+5SH,+United+Kingdom&t=m&z=14&ll=51.077429,1.121722&output=embed"></iframe>
-	    	    </div>
-		</div>
-		</div>
-	</g:each>	
+	
+<h1 id="titre" style="padding-left:30px" >${apartment.rue} </h1>
+<g:img dir="images" file="${apartment.pathPhoto}" style="width:100%;height:400px;padding-left:30px;" />
 
-<asset:javascript src="table.js"/>
+
+<div class="container" >
+    <div class="col-lg-4 col-sm-6 text-center"">
+    <div class="well" id ="comments">
+        <h4>Commentaires</h4>
+
+    <hr data-brackets-id="12673">
+    <ul data-brackets-id="12674" id="sortable" class="list-unstyled ui-sortable">
+        <strong class="pull-left primary-font">James</strong>
+        <small class="pull-right text-muted">
+           <span class="glyphicon glyphicon-time"></span>7 mins ago</small>
+        </br>
+        <li class="ui-state-default">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </li>
+        </br>
+         <strong class="pull-left primary-font">Taylor</strong>
+        <small class="pull-right text-muted">
+           <span class="glyphicon glyphicon-time"></span>14 mins ago</small>
+        </br>
+        <li class="ui-state-default">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</li>
+        
+    </ul>
+    </div>
+</div>
+
+
+</div>
+
+<div class="container">
+	<div class="row" id="comments">
+		<div class="span4 well" style="padding-bottom:0" id="messagepost">
+            <form accept-charset="UTF-8" action="" method="POST">
+                <textarea class="span4" id="new_message" name="new_message"
+                placeholder="Type in your message" rows="6" cols="50"></textarea>
+                <h6 class="pull-right" id="cLeft"></h6>
+                <button class="btn btn-info" type="submit">Post New Message</button>
+            </form>
+        </div>
 	</div>
+</div>
+	
+<div class="container" style="color:white;" id="droiteplease" >
+	<div class="row">
+		<h2>Laisse une note general!!</h2>
+	</div>
+    <div class="row lead">
+        <div id="stars" class="starrr"></div>
+        Vous avez donne la note de  <span id="count">0</span> etoiles
+	</div>
+    
+    <div class="row lead">
+        <p>Proprete</p>
+        <div id="stars-existing" class="starrr" data-rating='4'></div>
+    </div>
+	    <div class="row lead">
+        <p>Isolation</p>
+        <div id="stars-existing" class="starrr" data-rating='4'></div>
+    </div>
+	    <div class="row lead">
+        <p>Satisfaction</p>
+        <div id="stars-existing" class="starrr" data-rating='4'></div>
+    </div>
 </div>
 
 
 
+
+
+
+
+<asset:javascript src="table2.js"/>
 </body>
+
+
 </html>

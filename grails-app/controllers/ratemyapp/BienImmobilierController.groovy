@@ -13,9 +13,14 @@ class BienImmobilierController {
 		render (text:tousLesAppart,contentType: 'application/json', encoding:'utf-8')
 	}
 	
-	def searchApartment(){
+	//Renvoi la page d'un appartment 
+	//parametre:
+	//id: id de L'appartement 
+	def voirAppart(){
 		
-
+		def appart = BienImmobilier.get(params.id);
+		
+		render(view: "voirAppart",model:[apartment:appart]);
 	}
 	
 	//Permet une recherche avec une requete get avec comme parametre q la chaine a rechercher pour le nom de rue 
